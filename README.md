@@ -8,21 +8,20 @@ A serverless AWS system that monitors FDA regulatory activity, clinical trial up
 
 Biotech stocks move sharply on discrete, often poorly-telegraphed events: an FDA approval or rejection, a clinical trial readout, an SEC filing disclosing a regulatory update, a news report ahead of an official filing. These events come from independent, differently-structured sources (a REST API, a filings index, an RSS feed), on no fixed schedule, and the same underlying event is often reported multiple times by multiple sources with different timing and framing. A monitoring system for this has to solve for *signal*, not just *coverage* — most of the raw feed volume is noise, restatement, or boilerplate.
 
-## Architecture
-
-```mermaid
 flowchart LR
-    T[EventBridge<br/>5-minute schedule] --> L[Lambda Handler<br/>Python 3.12]
-    L --> S1[openFDA<br/>Drugs@FDA]
-    L --> S2[ClinicalTrials.gov<br/>API v2]
-    L --> S3[SEC EDGAR<br/>filings]
-    L --> S4[News RSS]
-    S1 & S2 & S3 & S4 --> N[Normalization &<br/>Entity Attribution]
-    N --> C[Event Classification<br/>verdict vs. process]
-    C --> F[Freshness &<br/>Deduplication]
-    F --> D[State Diff Engine<br/>DynamoDB, schema-versioned]
-    D --> A[SNS Alert Delivery]
-```
+    T["EventBridge<br/>5-minute schedule"] --> L["Lambda Handler<br/>Python 3.12"]
+    L --> S1["openFDA<br/>Drugs at FDA"]
+    L --> S2["ClinicalTrials.gov<br/>API v2"]
+    L --> S3["SEC EDGAR<br/>filings"]
+    L --> S4["News RSS"]
+    S1 --> N["Normalization and<br/>Entity Attribution"]
+    S2 --> N
+    S3 --> N
+    S4 --> N
+    N --> C["Event Classification<br/>verdict vs. process"]
+    C --> F["Freshness and<br/>Deduplication"]
+    F --> D["State Diff Engine<br/>DynamoDB, schema-versioned"]
+    D --> A["SNS Alert Delivery"]
 
 Runs as a single AWS Lambda function on a 5-minute EventBridge schedule, polling four independent data sources per tracked drug, and persisting state in DynamoDB between cycles so that only genuinely *new* information triggers a notification.
 
