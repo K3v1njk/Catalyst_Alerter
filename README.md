@@ -4,6 +4,17 @@ A serverless AWS system that monitors FDA regulatory activity, clinical trial up
 
 > **Note on this repository:** this is a portfolio write-up of an actively developed, production financial/regulatory event-monitoring system. The production source code, exact classification rules, and full tracked-entity configuration are kept private. This README documents the architecture, the engineering problems solved, and the testing approach. Happy to walk through implementation details in an interview.
 
+## SMS Use & Consent
+
+This system is built, operated, and used solely by the author for personal
+alerts. All SMS messages are sent to a single phone number belonging to the
+account owner, who is also the sole subscriber to the underlying AWS SNS
+topic — no third parties send, receive, or are billed for messages.
+Estimated volume: roughly 2-10 messages per day, sent only when a tracked
+regulatory or clinical trial event fires. Opt-in and opt-out are both
+managed directly by the account owner through AWS SNS subscription
+management.
+
 ## Problem
 
 Biotech stocks move sharply on discrete, often poorly-telegraphed events: an FDA approval or rejection, a clinical trial readout, an SEC filing disclosing a regulatory update, a news report ahead of an official filing. These events come from independent, differently-structured sources (a REST API, a filings index, an RSS feed), on no fixed schedule, and the same underlying event is often reported multiple times by multiple sources with different timing and framing. A monitoring system for this has to solve for *signal*, not just *coverage* — most of the raw feed volume is noise, restatement, or boilerplate.
@@ -64,16 +75,7 @@ Link: [redacted]
 
 Python 3.12 · AWS Lambda · Amazon DynamoDB · Amazon SNS · Amazon EventBridge · AWS SAM/CloudFormation
 
-## SMS Use & Consent
 
-This system is built, operated, and used solely by the author for personal
-alerts. All SMS messages are sent to a single phone number belonging to the
-account owner, who is also the sole subscriber to the underlying AWS SNS
-topic — no third parties send, receive, or are billed for messages.
-Estimated volume: roughly 2-10 messages per day, sent only when a tracked
-regulatory or clinical trial event fires. Opt-in and opt-out are both
-managed directly by the account owner through AWS SNS subscription
-management.
 
 ## Author
 
