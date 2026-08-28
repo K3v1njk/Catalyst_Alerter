@@ -35,6 +35,9 @@ flowchart LR
     F --> D["State Diff Engine<br/>DynamoDB, schema-versioned"]
     D --> A["SNS Alert Delivery"]
 
+```
+
+
 Runs as a single AWS Lambda function on a 5-minute EventBridge schedule, polling four independent data sources per tracked drug, and persisting state in DynamoDB between cycles so that only genuinely *new* information triggers a notification.
 
 **Pipeline stages:**
