@@ -64,6 +64,17 @@ Link: [redacted]
 
 Python 3.12 · AWS Lambda · Amazon DynamoDB · Amazon SNS · Amazon EventBridge · AWS SAM/CloudFormation
 
+## SMS Use & Consent
+
+This system is built, operated, and used solely by the author for personal
+alerts. All SMS messages are sent to a single phone number belonging to the
+account owner, who is also the sole subscriber to the underlying AWS SNS
+topic — no third parties send, receive, or are billed for messages.
+Estimated volume: roughly 2-10 messages per day, sent only when a tracked
+regulatory or clinical trial event fires. Opt-in and opt-out are both
+managed directly by the account owner through AWS SNS subscription
+management.
+
 ## Author
 
 Kevin Greegary — [LinkedIn](https://www.linkedin.com/in/kevin-greegary-547885324/) · [GitHub](https://github.com/K3v1njk)
