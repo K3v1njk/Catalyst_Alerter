@@ -19,6 +19,7 @@ management.
 
 Biotech stocks move sharply on discrete, often poorly-telegraphed events: an FDA approval or rejection, a clinical trial readout, an SEC filing disclosing a regulatory update, a news report ahead of an official filing. These events come from independent, differently-structured sources (a REST API, a filings index, an RSS feed), on no fixed schedule, and the same underlying event is often reported multiple times by multiple sources with different timing and framing. A monitoring system for this has to solve for *signal*, not just *coverage* — most of the raw feed volume is noise, restatement, or boilerplate.
 
+```mermaid
 flowchart LR
     T["EventBridge<br/>5-minute schedule"] --> L["Lambda Handler<br/>Python 3.12"]
     L --> S1["openFDA<br/>Drugs at FDA"]
