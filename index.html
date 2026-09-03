@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Catalyst Alerter is a personal biotech event intelligence project that monitors public regulatory, clinical-trial, SEC, and news sources and sends owner-operated alerts.">
+  <title>Catalyst Alerter — Biotech Event Intelligence</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">Catalyst <span>Alerter</span></a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#how">How it works</a>
+      <a href="sms.html">SMS Use</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">Personal software project</span>
+    <h1>Biotech event intelligence without the noise.</h1>
+    <p class="lead">
+      Catalyst Alerter is a serverless monitoring project that watches publicly available FDA,
+      ClinicalTrials.gov, SEC EDGAR, and financial-news sources for meaningful biotech regulatory
+      and clinical events, then sends alerts when something genuinely new appears.
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="sms.html">View SMS use & consent</a>
+      <a class="btn secondary" href="https://github.com/K3v1njk/Catalyst_Alerter" rel="noopener">View project on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <h2>About the project</h2>
+    <p class="lead">
+      The system is built and operated by the author for personal event monitoring. It is not a
+      brokerage, investment adviser, marketing platform, or public SMS subscription service.
+    </p>
+    <div class="grid">
+      <article class="card">
+        <h3>Regulatory monitoring</h3>
+        <p>Tracks public FDA and regulatory signals relevant to configured biotech catalysts.</p>
+      </article>
+      <article class="card">
+        <h3>Clinical-trial monitoring</h3>
+        <p>Checks ClinicalTrials.gov and company disclosures for important trial updates and readouts.</p>
+      </article>
+      <article class="card">
+        <h3>Event filtering</h3>
+        <p>Uses attribution, freshness, deduplication, and event classification to reduce repetitive or unrelated alerts.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how">
+  <div class="container">
+    <h2>How it works</h2>
+    <p>
+      A scheduled AWS workflow polls independent public sources, normalizes the results, associates
+      content with the correct tracked drug or program, classifies the event, compares it with stored
+      state, and sends an alert only when the event is new and relevant.
+    </p>
+    <div class="stack">
+      <span class="pill">AWS Lambda</span>
+      <span class="pill">Amazon EventBridge</span>
+      <span class="pill">Amazon DynamoDB</span>
+      <span class="pill">Amazon SNS</span>
+      <span class="pill">Python</span>
+      <span class="pill">FDA data</span>
+      <span class="pill">ClinicalTrials.gov</span>
+      <span class="pill">SEC EDGAR</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>SMS alert use</h2>
+    <div class="notice">
+      SMS alerts are intended only for the project operator's own phone number. There is no public
+      marketing list, no purchased contact list, and no third-party promotional messaging.
+    </div>
+    <div class="kv">
+      <strong>Purpose</strong><span>Time-sensitive regulatory and clinical-event notifications.</span>
+      <strong>Audience</strong><span>The account owner / project operator only.</span>
+      <strong>Expected volume</strong><span>Variable; typically low-volume and event-driven.</span>
+      <strong>Consent</strong><span>Managed by the account owner through the AWS notification subscription.</span>
+      <strong>Opt-out</strong><span>The owner can unsubscribe from the AWS SNS subscription at any time.</span>
+    </div>
+    <p class="small">See the dedicated <a href="sms.html">SMS Use & Consent</a> page for complete details.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Operator</h2>
+    <p>
+      Catalyst Alerter is maintained by Kevin Greegary as a personal software-engineering project.
+      Project contact and technical information are available through the public GitHub profile and repository.
+    </p>
+    <div class="actions">
+      <a class="btn secondary" href="https://github.com/K3v1njk" rel="noopener">GitHub profile</a>
+      <a class="btn secondary" href="https://github.com/K3v1njk/Catalyst_Alerter" rel="noopener">Project repository</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="links">
+      <a href="sms.html">SMS Use</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="https://github.com/K3v1njk/Catalyst_Alerter">GitHub</a>
+    </div>
+    <div>© 2026 Catalyst Alerter. Personal software project.</div>
+  </div>
+</footer>
+</body>
+</html>
